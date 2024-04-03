@@ -1,57 +1,51 @@
 void main() {
   // Упражнение 1
-  for (int i = 1; i <= 100; i++)
-  {
-    if (i % 15 == 0) {
-      print('Super Quiz');
-    } else if (i % 3 == 0) {
-      print('Super');
-    } else if (i % 5 == 0) {
-      print('Quiz');
-    } else {
-      print(i);
-    }
+  const nums = <double>[1, 2.7, 5, 8.4, 10];
+  var sum = 0.0;
+  for(var num in nums) { 
+    sum += num;
   }
+  print(sum);
 
   // Упражнение 2
-  const a = 2;
-  const b = 555;
-  const c = 236455;
+  const list = [60, 999, 14, "dart1", 45, 95, "dart", 1];
 
-  var cur = a;
-  var length = 0;
-  while (cur != 0)
-  {
-    cur ~/= 10;
-    length++;
+  const value1 = 'dart';
+  var result = false;
+  for(var item in list) {
+    if (item == value1) {
+      result = true;
+      break;
+    }
   }
-  print('a=$a length: $length');
+  print(result);
   
-  cur = b;
-  length = 0;
-  while (cur != 0)
-  {
-    cur ~/= 10;
-    length++;
+  const value2 = 15;
+  result = false;
+  for(var item in list) {
+    if (item == value2) {
+      result = true;
+      break;
+    }
   }
-  print('b=$b length: $length');
+  print(result);
   
-  cur = c;
-  length = 0;
-  while (cur != 0)
-  {
-    cur ~/= 10;
-    length++;
-  }
-  print('c=$c length: $length');
-
   // Упражнение 3
-  const year1 = 1705;
-  const year2 = 1900;
-  const year3 = 1601;
-  const year4 = 2000;
-  print(year1 ~/ 100 + (year1 % 100 == 0 ? 0 : 1));
-  print(year2 ~/ 100 + (year2 % 100 == 0 ? 0 : 1));
-  print(year3 ~/ 100 + (year3 % 100 == 0 ? 0 : 1));
-  print(year4 ~/ 100 + (year4 % 100 == 0 ? 0 : 1));
+  var list3 = [8, 2, 5, 4, 3, 9, 7, 1, 6];
+  print('list is $list3');
+  print('list length is ${list3.length} elements');
+  list3.sort((a, b) => b.compareTo(a));
+  print('descending sorted list: $list3');
+  var newList3 = [for(int i = 0; i < 5; i++) list3[i]];
+  newList3.sort();
+  print('sorted sublist with length of 5 elements: $newList3');
+  var indexOf7 = newList3.indexOf(7);
+  print('index of a value \'7\' in list is $indexOf7');
+  newList3.removeWhere((element) => 7 <= element && element <= 9);
+  print('list with remove values from 7 to 9: $newList3');
+  list3.sort();
+  list3 = [for(var num in list3) const[1, 2, 3].contains(num) ? num * 10 : num];
+  print('sorted list with replaced values [1, 2, 3, ...] => [10, 20, 30, ...]: $list3');
+  var newList32 = [...list3, ...newList3];
+  print('union list: $newList32');
 }
