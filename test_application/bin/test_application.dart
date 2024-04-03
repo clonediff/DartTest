@@ -1,40 +1,57 @@
-import 'dart:math';
-
 void main() {
   // Упражнение 1
-  int temperature = 15;
-  int value = 10;
-  String dart = 'Dart';
-  String flutter = 'Flutter';
-  print('Мне нравится изучать $dart и $flutter!');
-  print('Сегодня температура $temperature С, а завтра похолодает до ($temperature - 3.1) - ${temperature - 3.1} С.');
-  print('$value плюс $value, получится ${value + value}');
+  for (int i = 1; i <= 100; i++)
+  {
+    if (i % 15 == 0) {
+      print('Super Quiz');
+    } else if (i % 3 == 0) {
+      print('Super');
+    } else if (i % 5 == 0) {
+      print('Quiz');
+    } else {
+      print(i);
+    }
+  }
 
   // Упражнение 2
-  double tempFarenheit = 60.79;
-  print('$tempFarenheit F = ${((tempFarenheit - 32) / 1.8).toStringAsFixed(1)} C');
+  const a = 2;
+  const b = 555;
+  const c = 236455;
+
+  var cur = a;
+  var length = 0;
+  while (cur != 0)
+  {
+    cur ~/= 10;
+    length++;
+  }
+  print('a=$a length: $length');
+  
+  cur = b;
+  length = 0;
+  while (cur != 0)
+  {
+    cur ~/= 10;
+    length++;
+  }
+  print('b=$b length: $length');
+  
+  cur = c;
+  length = 0;
+  while (cur != 0)
+  {
+    cur ~/= 10;
+    length++;
+  }
+  print('c=$c length: $length');
 
   // Упражнение 3
-  const a = 3.2;
-  const b = -7.8;
-  const c = 1;
-
-  var x1 = (-b + sqrt(b * b - 4 * a *c)) / (2 * a);
-  var x2 = (-b - sqrt(b * b - 4 * a *c)) / (2 * a);
-  print('x1 = ${x1.toStringAsFixed(2)}; x2 = ${x2.toStringAsFixed(2)}');
-
-  // Упражение 4
-  final timeNow = DateTime.now();
-
-  const maybeJava = 'Java';
-  const maybeFlutter = 'Flutter';
-
-  var favourite;
-  favourite = '${maybeJava}and$maybeFlutter';
-  favourite = 'Now I like $favourite';
-
-  final newfavourite = favourite.replaceAll('Java', 'Dart');
-
-  print('Now is time: $timeNow');
-  print(newfavourite);
+  const year1 = 1705;
+  const year2 = 1900;
+  const year3 = 1601;
+  const year4 = 2000;
+  print(year1 ~/ 100 + (year1 % 100 == 0 ? 0 : 1));
+  print(year2 ~/ 100 + (year2 % 100 == 0 ? 0 : 1));
+  print(year3 ~/ 100 + (year3 % 100 == 0 ? 0 : 1));
+  print(year4 ~/ 100 + (year4 % 100 == 0 ? 0 : 1));
 }
