@@ -1,71 +1,52 @@
 void main() {
-  try {
-    print(factorial(-1));
-  } catch (e, s) {
-    if (e is FactorialException) {
-      print(e.errorMessage());
-    }
-    print(s);
-  } finally {
-    // Code
-  }
+  // final myCar = Car(503, 'BMW');
+  final myCar = Car(vin: 503, model: 'BMW');
+  // myCar.vin = 503;
+  // myCar.model = 'BMW';
+  print(myCar);
+
+  // final myCar1 = Car()
+  //   ..vin = 100
+  //   ..model = 'Ford';
+  // print(myCar1.printNewCar());
+
+  // final anotherCar = myCar;
+  // print(myCar.vin);
+  // anotherCar.vin = 0;
+  // print(myCar.vin);
+
+  final volvoCar = Car.volvo();
+  print(volvoCar);
 }
 
-class FactorialException implements Exception {
-  String errorMessage() {
-    return "Input number must be more than zero";
-  }
-}
+class Car {
+  int vin;
+  String model;
 
-int factorial (int n) {
-  if (n < 1) throw FactorialException();
-  int fact = 1; 
-  for (var i = 2; i <= n; i++) {
-    fact *= i;
-  }
-  return fact;
-}
+  // Car(int vin, String model) {
+  //   this.vin = vin;
+  //   this.model = model;
+  // }
 
-void tryCatchShowCases() {
-  try {
-    var list = [double.parse('3.14'), 2, 3];
-    print(list);
-  } catch (e) {
-    print('The exception: $e');
+  // Car(this.vin, this.model);
+
+  Car({required this.vin, this.model = 'unknown'});
+
+  // Требуется инициализация по умолчанию у полей класса
+  // Car.volvo() {
+  //   vin = 200;
+  //   model = 'Volvo';
+  // }
+
+  // Инициализация по умолчанию у полей класса не требуется
+  Car.volvo() : this(vin: 200, model: 'Volvo');
+
+  String printNewCar() {
+    return 'My new car has vin: $vin and model: $model';
   }
-  
-  try {
-    var list = [double.parse('3,14'), 2, 3];
-    print(list);
-  } catch (e) {
-    print('The exception: $e');
-  }
-  
-  try {
-    var list = [double.parse('3.14'), 2, 3];
-    print('Result: ${list[5]}');
-  } catch (e) {
-    print('The exception: $e');
-  }
-  
-  try {
-    var list = [double.parse('3.14'), 2, 3];
-    print('Result: ${list[5]}');
-  } on RangeError {
-    print('Out of bound of list'); 
-  }catch (e) {
-    print('The exception: $e');
-  }
-  
-  try {
-    var list = [double.parse('3,14'), 2, 3];
-    print('Result: ${list[5]}');
-  } on RangeError {
-    print('Out of bound of list'); 
-  }catch (e, s) {
-    print('The exception: $e');
-    print('Stack Trace: $s');
-  } finally {
-    print('This is Finally and is always executed');
+
+  @override
+  String toString() {
+    return 'Car vin: $vin \nCar model: $model';
   }
 }
