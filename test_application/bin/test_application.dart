@@ -1,11 +1,11 @@
 void main() {
   const cuboid = Cuboid(1, 2, 3);
-  print('Cuboid Volume = ${cuboid.Volume}');
-  print('Cuboid Surface Area = ${cuboid.SurfaceArea}');
+  print('Cuboid Volume = ${cuboid.volume}');
+  print('Cuboid Surface Area = ${cuboid.surfaceArea}');
 
   const cube = Cube(2);
-  print('Cube Volume = ${cube.Volume}');
-  print('Cube Surface Area = ${cube.SurfaceArea}');
+  print('Cube Volume = ${cube.volume}');
+  print('Cube Surface Area = ${cube.surfaceArea}');
 }
 
 class Cuboid {
@@ -15,8 +15,8 @@ class Cuboid {
 
   const Cuboid(this.length, this.width, this.height);
 
-  int get SurfaceArea => 2 * (length * width + width * height + length * height);
-  int get Volume => length * width * height;
+  int get surfaceArea => 2 * (length * width + width * height + length * height);
+  int get volume => length * width * height;
 }
 
 class Cube extends Cuboid {
