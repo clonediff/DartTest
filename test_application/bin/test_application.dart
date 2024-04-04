@@ -1,36 +1,21 @@
-import 'dart:collection';
+import 'package:test_application/squares.dart';
 
 void main() {
-  // Упражнение 1
-  var pizzaPrices = {
-    'Venice': 289,
-    'Double Cheese': 359,
-    'Roman Margherita': 299,
-  };
-
-  // Подзадача 1
-  const myOrder = ['Venice', 'Double Cheese', 'Roman Margherita'];
-  var orderPrice = 0;
-  var notFound = <String>[];
-  for (var pizza in myOrder) {
-    var pizzaPrice = pizzaPrices[pizza];
-    if (pizzaPrice == null) {
-      notFound.add(pizza);
-    } else {
-      orderPrice += pizzaPrice;
+  Iterable<int> hundredSquare() sync* {
+    for (int i = 1; true; i++) {
+      yield i * i;
     }
   }
-  print('Заказано ${myOrder.length - notFound.length} пиццы из ${myOrder.length} на сумму: $orderPrice рублей');
-  for (var notFoundPizza in notFound) {
-    print('$notFoundPizza нет в меню');
+
+  final squares = hundredSquare();
+  for (var square in squares) {
+    print(square);
+    if (square == 50 * 50) break;
   }
 
-  // Подзадача 2
-  pizzaPrices['Pepperoni'] = 199;
-  print('Новое меню: $pizzaPrices');
-
-  // Подзадача 3
-  final sortedPizzaPrices = SplayTreeMap<String, int>((a, b) => a.compareTo(b));
-  sortedPizzaPrices.addEntries(pizzaPrices.entries);
-  print('Сортированное меню по ключам: $sortedPizzaPrices');
+  final squares2 = HundredSquares();
+  for (var square in squares2) {
+    print(square);
+    if (square == 50 * 50) break;
+  }
 }
