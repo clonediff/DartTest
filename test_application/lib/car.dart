@@ -22,6 +22,16 @@ class Car {
   // Инициализация по умолчанию у полей класса не требуется
   const Car.volvo() : this(vin: 200, model: 'Volvo');
 
+  factory Car.reno() {
+    return Car(vin: 300, model: 'Reno');
+  }
+
+  factory Car.fromJson(Map<String, dynamic>json) {
+    final carVin = json['vin'] as int;
+    final carModel = json['model'] as String;
+    return Car(vin: carVin, model: carModel);
+  }
+
   String printNewCar() {
     return 'My new car has vin: $_vin and model: $_model';
   }
