@@ -1,29 +1,10 @@
-class Car {
-  int vin;
-  String model;
-  static int numOfWheels = 3;
+class Car<T> {
+  T id;
+  String carName;
 
-  void checkMove() {
-    numOfWheels < 4 ? print('Car is broken') : print('Car is good');
-  }
+  Car(this.id, this.carName);
 
-  static double time(int dist, double speed) => dist / speed;
-
-  static void setWheels(int value) {
-    if (value == 4) {
-      numOfWheels = value;
-    } else {
-      print('Please. correct value(4)');
-    }
-  }
-
-  Car(this.vin, this.model) {
-    var t = time(500, 80);
-    print('Time t: $t');
-  }
-
-  @override
-  String toString() {
-    return 'Car vin: $vin \nCar model: $model';
+  void move<T1>(T1 speed) {
+    print('The $carName. ID number: $id. Speed car: $speed');
   }
 }
