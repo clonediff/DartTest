@@ -1,6 +1,6 @@
 class Car {
-  int _vin;
-  String _model;
+  final int _vin;
+  final String _model;
 
   // Car(int vin, String model) {
   //   this.vin = vin;
@@ -9,11 +9,9 @@ class Car {
 
   // Car(this.vin, this.model);
 
-  Car({required int vin, String model = 'unknown'})
+  const Car({required int vin, String model = 'unknown'})
       : _vin = vin,
-        _model = model.toUpperCase() {
-    print('Car: $_vin and $_model');
-  }
+        _model = model;
 
   // Требуется инициализация по умолчанию у полей класса
   // Car.volvo() {
@@ -22,7 +20,7 @@ class Car {
   // }
 
   // Инициализация по умолчанию у полей класса не требуется
-  Car.volvo() : this(vin: 200, model: 'Volvo');
+  const Car.volvo() : this(vin: 200, model: 'Volvo');
 
   String printNewCar() {
     return 'My new car has vin: $_vin and model: $_model';

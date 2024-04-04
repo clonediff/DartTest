@@ -2,7 +2,7 @@ import 'package:test_application/car.dart';
 
 void main() {
   // final myCar = Car(503, 'BMW');
-  final myCar = Car(vin: 503, model: 'BMW');
+  const myCar = Car(vin: 503, model: 'BMW');
   // myCar.vin = 503;
   // myCar.model = 'BMW';
   print(myCar);
