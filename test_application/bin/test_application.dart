@@ -1,16 +1,11 @@
 import 'package:test_application/car.dart';
 
 void main() {
-  const myCar = Car(vin: 503, model: 'BMW');
+  final myCar = Car(503, 'BMW');
   print(myCar);
 
-  const volvoCar = Car.volvo();
-  print(volvoCar);
+  Car.numOfWheels = 4;
+  myCar.checkMove();
 
-  final renoCar = Car.reno();
-  print(renoCar);
-
-  final mapCar = {'vin': 700, 'model': 'Lada'};
-  final ladaCar = Car.fromJson(mapCar);
-  print(ladaCar);
+  Car.setWheels(3);
 }

@@ -1,43 +1,29 @@
 class Car {
-  final int _vin;
-  final String _model;
+  int vin;
+  String model;
+  static int numOfWheels = 3;
 
-  // Car(int vin, String model) {
-  //   this.vin = vin;
-  //   this.model = model;
-  // }
-
-  // Car(this.vin, this.model);
-
-  const Car({required int vin, String model = 'unknown'})
-      : _vin = vin,
-        _model = model;
-
-  // Требуется инициализация по умолчанию у полей класса
-  // Car.volvo() {
-  //   vin = 200;
-  //   model = 'Volvo';
-  // }
-
-  // Инициализация по умолчанию у полей класса не требуется
-  const Car.volvo() : this(vin: 200, model: 'Volvo');
-
-  factory Car.reno() {
-    return Car(vin: 300, model: 'Reno');
+  void checkMove() {
+    numOfWheels < 4 ? print('Car is broken') : print('Car is good');
   }
 
-  factory Car.fromJson(Map<String, dynamic>json) {
-    final carVin = json['vin'] as int;
-    final carModel = json['model'] as String;
-    return Car(vin: carVin, model: carModel);
+  static double time(int dist, double speed) => dist / speed;
+
+  static void setWheels(int value) {
+    if (value == 4) {
+      numOfWheels = value;
+    } else {
+      print('Please. correct value(4)');
+    }
   }
 
-  String printNewCar() {
-    return 'My new car has vin: $_vin and model: $_model';
+  Car(this.vin, this.model) {
+    var t = time(500, 80);
+    print('Time t: $t');
   }
 
   @override
   String toString() {
-    return 'Car vin: $_vin \nCar model: $_model';
+    return 'Car vin: $vin \nCar model: $model';
   }
 }
