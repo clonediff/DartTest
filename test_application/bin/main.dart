@@ -1,49 +1,41 @@
-import 'dart:io';
+void main() {
+  final json = {'name': 'Konstantin', 'age': 38, 'height': 178};
 
-import 'package:test_application/weather_api_client.dart';
+  final person = getPerson(json);
+  print(person.name);
+  print(person.age);
+  print(person.height);
 
-void main(List<String> arguments) async {
-  if (arguments.length != 1) {
-    print('Syntax error: dart bin/main.dart <city>');
-    return;
-  }
+  final (:name, :age, :height) = getPerson(json);
+  print(name);
+  print(age);
+  print(height);
 
-  final cityName = arguments[0];
-  // print(cityName);
+  final point1 = (x: 1, y: 2, z: 3);
+  final point2 = (x: 1, y: 2, z: 3);
+  print(point1 == point2);
+}
 
-  final weatherApiClient = WeatherApiClient();
+({String name, int age, int height}) getPerson(Map<String, dynamic> json) {
+  return (
+    name: json['name'],
+    age: json['age'],
+    height: json['height'],
+  );
+}
 
-  // Получение текущего прогноза погоды
-  try {
-    final currentWeather = await weatherApiClient.getCurrentWeather(cityName);
-    print('Current weather for $cityName');
-    print(currentWeather);
-    print('-----------------------------\n');
-  } on WeatherApiException catch (error) {
-    print('Error: ${error.message}');
-  } on SocketException catch (_) {
-    print(
-        'Could not fetch current weather data. Check your internet connection');
-  } catch (e) {
-    print(e);
-  }
+class Person {
+  final String name;
+  final int age;
+  final int height;
 
-  // Получение прогноза погоды на неделю
-  try {
-    final weeklyForecast = await weatherApiClient.getWeeklyForecast(cityName);
-    print('Weekly forecast for $cityName');
-    // ignore: avoid_function_literals_in_foreach_calls
-    weeklyForecast.forEach((foreacast) {
-      print(foreacast);
-      print('-----------------------------\n');
-    });
-  } on WeatherApiException catch (error) {
-    print('Error: ${error.message}');
-  } on SocketException catch (_) {
-    print(
-        'Could not fetch current weather data. Check your internet connection');
-  } catch (e) {
-    print(e);
+  const Person({required this.name, required this.age, required this.height});
+
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(
+      name: json['name'] as String,
+      age: json['age'] as int,
+      height: json['height'] as int,
+    );
   }
 }
-// weatherapi.com: rerama7876@dacgu.com
